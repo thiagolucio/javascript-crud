@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </link>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <title>CRUDJS</title>
+</head>
+
+<body class="bg-warning">
+  <div class="container my-5 m-auto">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-body p-5 shadow-sm">
+          <h3 class="card-title">Criar novo usuário</h3>
+          <form id="formularioUsuario">
+            <div class="row">
+              <div class="form-group mb-3 col-6">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" aria-label="Username" aria-describedby="username">
+              </div>
+              <div class="form-group mb-3 col-6">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" aria-label="email" aria-describedby="email">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group mb-3 col-6">
+                <label for="first_name">Nome</label>
+                <input type="text" id="first_name" class="form-control" aria-label="Nome" aria-describedby="nome">
+              </div>
+              <div class="form-group mb-3 col-6">
+                <label for="last_name">Sobrenome</label>
+                <input type="text" id="last_name" class="form-control" aria-label="Last Name" aria-describedby="Last name">
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="avatar">URL Avatar</label>
+              <input type="text" id="avatar" class="form-control" aria-label="Avatar" aria-describedby="Avatar from user">
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary text-light">Criar Usuário</button>
+                <a href="/index.html" class="btn btn-secondary text-light"> Voltar</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/create-user.js"></script>
+</body>
+
+</html>

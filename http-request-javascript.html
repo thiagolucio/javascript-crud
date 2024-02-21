@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Requisições HTTP</title>
+</head>
+<body>
+
+  <h1>Exemplo de Requisições HTTP</h1>
+  <button onclick="listarUsuarios()">Listar Usuários</button>
+  <button onclick="criarUsuario()">Criar Usuário</button>
+  <button onclick="atualizarUsuario()">Atualizar Usuário</button>
+  <button onclick="atualizarParcialUsuario()">Atualizar Parcial Usuário</button>
+  <button onclick="excluirUsuario()">Excluir Usuário</button>
+
+  <script>
+    const apiUrl = 'http://localhost:3001/user';
+
+    function handleResponse(response) {
+      if (!response.ok) {
+        throw new Error(`Erro na requisição: ${response.status}`);
+      }
+      return response.json();
+    }
+
+    function listarUsuarios() {
+      fetch(apiUrl)
+        .then(handleResponse)
+        .then(data => {
+          console.log('Usuários:', data);
+        })
+        .catch(error => {
+          console.error('Erro na requisição:', error);
+        });
+    }
+
+    function criarUsuario() {
+      const novoUsuario = {
+        username: 'novo_usuario',
+        password: 'senha123',
+        // Adicione outros campos conforme necessário
+      };
+
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(novoUsuario),
+      })
+        .then(handleResponse)
+        .then(data => {
+          console.log('Novo usuário criado:', data);
+        })
+        .catch(error => {
+          console.error('Erro na requisição:', error);
+        });
+    }
+
+    function atualizarUsuario() {
+      const usuarioAtualizado = {
+        id: '1', // ID do usuário que você deseja atualizar
+        username: 'usuario_atualizado',
+        // Atualize outros campos conforme necessário
+      };
+
+      fetch(`${apiUrl}/${usuarioAtualizado.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usuarioAtualizado),
+      })
+        .then(handleResponse)
+        .then(data => {
+          console.log('Usuário atualizado:', data);
+        })
+        .catch(error => {
+          console.error('Erro na requisição:', error);
+        });
+    }
+
+    function atualizarParcialUsuario() {
+      const usuarioAtualizadoParcial = {
+        id: '1', // ID do usuário que você deseja atualizar parcialmente
+        username: 'usuario_atualizado_parcial',
+        // Atualize outros campos conforme necessário
+      };
+
+      fetch(`${apiUrl}/${usuarioAtualizadoParcial.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usuarioAtualizadoParcial),
+      })
+        .then(handleResponse)
+        .then(data => {
+          console.log('Usuário atualizado parcialmente:', data);
+        })
+        .catch(error => {
+          console.error('Erro na requisição:', error);
+        });
+    }
+
+    function excluirUsuario() {
+      const idUsuarioParaExcluir = '1'; // ID do usuário que você deseja excluir
+
+      fetch(`${apiUrl}/${idUsuarioParaExcluir}`, {
+        method: 'DELETE',
+      })
+        .then(handleResponse)
+        .then(data => {
+          console.log('Usuário excluído:', data);
+        })
+        .catch(error => {
+          console.error('Erro na requisição:', error);
+        });
+    }
+  </script>
+
+</body>
+</html>
